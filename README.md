@@ -1,5 +1,5 @@
 ![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?logo=swagger&logoColor=white)
-[![API Documentation](https://img.shields.io/badge/API-Documentation-blue)](https://haydenz578.github.io/BerlinTravelAPI/#/)
+[![API Documentation](https://img.shields.io/badge/API-Documentation-blue)](https://haydenz578.github.io/travel-api/)
 ![Flask](https://img.shields.io/badge/flask-%23000.svg?logo=flask&logoColor=white)
 ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?logo=sqlite&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?logo=docker&logoColor=white)
@@ -7,7 +7,7 @@
 # Berlin Travel API
 
 ## 📖 Overview
-Berlin Travel API provides public transport travel information and operator data for Berlin and Brandenburg.  
+Berlin Travel API provides public transport travel information and operator data for Berlin area.  
 It is containerized using Docker and built automatically via a CI/CD pipeline powered by GitHub Actions.
 
 ## :camera_flash: Features
@@ -34,7 +34,7 @@ It is containerized using Docker and built automatically via a CI/CD pipeline po
 ### :clapper: Preview
 <img width="944" height="416" alt="api" src="https://github.com/user-attachments/assets/da3b4c55-65b8-428d-b83e-c406f5185d26" />
 
-#### 👉 [View Interactive API Documentation Here](https://haydenz578.github.io/BerlinTravelAPI/#/)
+#### 👉 [View Interactive API Documentation Here](https://haydenz578.github.io/travel-api/)
 
 ## 🐳 Local Docker Setup
 You can build and run this API locally:
