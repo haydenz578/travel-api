@@ -1,0 +1,507 @@
+{
+  "swagger": "2.0",
+  "basePath": "/",
+  "paths": {
+    "/guide": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Guide"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/StopError400"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/StopError503"
+            }
+          }
+        },
+        "operationId": "get_guide",
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/operator-profiles/{stop_id}": {
+      "parameters": [
+        {
+          "name": "stop_id",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Operator"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/StopError400"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/StopError404"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/StopError503"
+            }
+          }
+        },
+        "operationId": "get_operators",
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/stops": {
+      "put": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StopError200"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/Stop"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/StopError400"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/StopError404"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/StopError503"
+            }
+          }
+        },
+        "operationId": "put_import_stops",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "Name or keyword of a stop, required",
+            "name": "query",
+            "type": "string"
+          }
+        ],
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/stops/{stop_id}": {
+      "parameters": [
+        {
+          "name": "stop_id",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "patch": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Stop"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/StopDelete400"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/StopDelete404"
+            }
+          }
+        },
+        "operationId": "patch_the_stop",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "description": "A non blank string, optional"
+          },
+          {
+            "name": "next_departure",
+            "in": "query",
+            "type": "string",
+            "description": "A non blank string, optional"
+          },
+          {
+            "name": "latitude",
+            "in": "query",
+            "type": "number",
+            "description": "A non blank float number, optional"
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "type": "number",
+            "description": "A non blank float number, optional"
+          },
+          {
+            "name": "last_updated",
+            "in": "query",
+            "type": "string",
+            "description": "A non blank time string, optional"
+          }
+        ],
+        "tags": [
+          ""
+        ]
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TheStop"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/StopError400"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/StopError404"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/StopError503"
+            }
+          }
+        },
+        "operationId": "get_the_stop",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "last_updated / name / latitude / longitude / next_departure, optional",
+            "name": "include",
+            "type": "string"
+          }
+        ],
+        "tags": [
+          ""
+        ]
+      },
+      "delete": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/StopDelete"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/StopDelete400"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/StopDelete404"
+            }
+          }
+        },
+        "operationId": "delete_the_stop",
+        "tags": [
+          ""
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Berlin Travel API",
+    "version": "1.0.1",
+    "description": "Berlin Public Transport Travel Information & Guide API"
+  },
+  "produces": [
+    "application/json"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "tags": [
+    {
+      "name": ""
+    }
+  ],
+  "definitions": {
+    "StopError503": {
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Transport Service is not available now."
+        }
+      },
+      "type": "object"
+    },
+    "StopError404": {
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "This stop could not be found, try a different keyword or stop id."
+        }
+      },
+      "type": "object"
+    },
+    "StopError400": {
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Your request is not valid."
+        }
+      },
+      "type": "object"
+    },
+    "StopError200": {
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "This stop is already in the database."
+        }
+      },
+      "type": "object"
+    },
+    "Stop": {
+      "properties": {
+        "stop_id": {
+          "type": "integer",
+          "example": "8000085"
+        },
+        "last_updated": {
+          "type": "string",
+          "example": "2025-03-08-12:00:40"
+        },
+        "_links": {
+          "$ref": "#/definitions/Links"
+        }
+      },
+      "type": "object"
+    },
+    "Links": {
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/Self"
+        }
+      },
+      "type": "object"
+    },
+    "Self": {
+      "properties": {
+        "href": {
+          "type": "string",
+          "example": "http://127.0.0.1:5000/stops/8000085"
+        }
+      },
+      "type": "object"
+    },
+    "StopDelete404": {
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "The stop_id 8010159 could not be found in the database."
+        },
+        "stop_id": {
+          "type": "integer",
+          "example": "8010159"
+        }
+      },
+      "type": "object"
+    },
+    "StopDelete400": {
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "The stop_id stop8080 is not valid."
+        },
+        "stop_id": {
+          "type": "integer",
+          "example": "stop8080"
+        }
+      },
+      "type": "object"
+    },
+    "TheStop": {
+      "properties": {
+        "stop_id": {
+          "type": "integer",
+          "example": "8002549"
+        },
+        "last_updated": {
+          "type": "string",
+          "example": "2025-03-08-12:00:40"
+        },
+        "name": {
+          "type": "string",
+          "example": "Hamburg Hbf"
+        },
+        "latitude": {
+          "type": "number",
+          "example": "53.553533"
+        },
+        "longitude": {
+          "type": "number",
+          "example": "10.00636"
+        },
+        "next_departure": {
+          "type": "string",
+          "example": "Platform 4 A-C towards Sollstedt"
+        },
+        "_links": {
+          "$ref": "#/definitions/Links2"
+        }
+      },
+      "type": "object"
+    },
+    "Links2": {
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/Self2"
+        },
+        "next": {
+          "$ref": "#/definitions/Next"
+        },
+        "prev": {
+          "$ref": "#/definitions/Prev"
+        }
+      },
+      "type": "object"
+    },
+    "Self2": {
+      "properties": {
+        "href": {
+          "type": "string",
+          "example": "http://127.0.0.1:5000/stops/8002549"
+        }
+      },
+      "type": "object"
+    },
+    "Next": {
+      "properties": {
+        "href": {
+          "type": "string",
+          "example": "http://127.0.0.1:5000/stops/8010159"
+        }
+      },
+      "type": "object"
+    },
+    "Prev": {
+      "properties": {
+        "href": {
+          "type": "string",
+          "example": "http://127.0.0.1:5000/stops/8000152"
+        }
+      },
+      "type": "object"
+    },
+    "StopDelete": {
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "The stop_id 8010159 has been removed from the database."
+        },
+        "stop_id": {
+          "type": "integer",
+          "example": "8010159"
+        }
+      },
+      "type": "object"
+    },
+    "Operator": {
+      "properties": {
+        "stop_id": {
+          "type": "integer",
+          "example": "8010159"
+        },
+        "profiles": {
+          "type": "array",
+          "description": "List of operator profiles",
+          "items": {
+            "$ref": "#/definitions/Profile"
+          }
+        }
+      },
+      "type": "object"
+    },
+    "Profile": {
+      "properties": {
+        "operator_name": {
+          "type": "string",
+          "example": "DB Fernverkehr AG"
+        },
+        "information": {
+          "type": "string",
+          "example": "DB Fernverkehr AG is a subsidiary of Deutsche Bahn that operates long-distance passenger trains in Germany."
+        }
+      },
+      "type": "object"
+    },
+    "Guide": {
+      "properties": {
+        "Web Browser": {
+          "type": "string",
+          "example": "We recommend using a web browser for this guide, a Guide.txt file will automatically download for you."
+        },
+        "curl": {
+          "type": "string",
+          "example": "If you run curl from a terminal, the guide text will be printed on your screen."
+        }
+      },
+      "type": "object"
+    }
+  },
+  "responses": {
+    "ParseError": {
+      "description": "When a mask can't be parsed"
+    },
+    "MaskError": {
+      "description": "When any error occurs on mask"
+    }
+  }
+}
